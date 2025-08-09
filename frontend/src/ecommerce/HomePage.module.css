@@ -1,0 +1,440 @@
+.home {
+  background: linear-gradient(135deg, #fffacd 0%, #f0f8ff 50%, #fffacd 100%);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 14px 0 0;
+  min-height: 100vh;
+  position: relative;
+}
+
+.home::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #fffacd 0%, #f0f8ff 50%, #fffacd 100%);
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  align-self: stretch;
+  margin: 0;
+  font: 15px Inter, sans-serif;
+  background-color: #ff69b4;
+  padding: 15px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.searchForm {
+  flex: 1;
+  min-width: 240px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.searchInputContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 2px solid #ffffff;
+  border-radius: 41px;
+  background-color: #fff;
+  width: 813px;
+  padding: 10px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.searchIcon {
+  color: #666;
+  margin-right: 10px;
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  color: #333;
+  font: 400 15px Inter, sans-serif;
+}
+
+.searchInput::placeholder {
+  color: #666;
+  font: 400 15px Inter, sans-serif;
+}
+
+.authButtons {
+  display: flex;
+  gap: 15px;
+  color: #43555e;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+.authButton {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid #ffffff;
+  color: #333;
+  font: 500 14px Inter, sans-serif;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.authButton:hover {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cartContainer {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 2px solid #ffffff;
+  padding: 10px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cartContainer:hover {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.cartCount {
+  position: absolute;
+  top: -3px;
+  right: -8px;
+  background-color: #3e91d1;
+  color: white;
+  font-size: 0.5em;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 0.9rem;
+  height: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroBanner {
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #bbb;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.activeDot {
+  background-color: #333;
+}
+
+.categories {
+  display: flex;
+  gap: 7rem;
+  margin-top: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sectionTitle {
+  color: #333;
+  text-align: center;
+  margin-top: 8rem;
+  font: 600 2em Inter, sans-serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.productGrid {
+  padding: 0 2rem 0 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  margin-top: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.seeAllButton {
+  border-radius: 49px;
+  background-color: #2d2c2c;
+  color: #fff;
+  width: 10rem;
+  margin: 10rem auto 0;
+  padding: 1rem 1rem;
+  font: 500 1em Inter, sans-serif;
+  border: none;
+  cursor: pointer;
+}
+
+/* Image container */
+.promotionBanner {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 10rem 0 0 0;
+  overflow: hidden;
+}
+
+/* Image styling */
+.promotionBanner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  max-height: 500px;
+}
+
+.suggestionsDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestionItem {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.suggestionItem:hover {
+  background-color: #f0f0f0;
+}
+
+.promotionBanner img {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+/* Animation for the fadeIn effect */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.hamburgerMenu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburgerMenu .bar {
+  width: 1.5rem;
+  height: 0.12rem;
+  margin: 2.6px 0;
+  background-color: #787878;
+}
+
+.mobileMenu {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  border-top: 2px solid #e0e0e0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobileMenu .searchInput {
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: calc(100% - 0px);
+  font-size: 1rem;
+}
+
+/* Media Queries for responsiveness */
+
+@media (max-width: 768px) {
+  .hamburgerMenu {
+    display: flex;
+  }
+
+  .header {
+    align-self: stretch;
+    margin: 0;
+    padding: 10px 15px;
+    background-color: #ff69b4;
+  }
+
+  .header .searchForm {
+    display: none;
+  }
+
+  .authButton {
+    display: none;
+  }
+
+  .categories {
+    gap: 0.1rem;
+  }
+
+  .dot {
+    width: 0.4rem;
+    height: 0.4rem;
+  }
+
+  .mobileAthButton {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid #ffffff;
+    color: #333;
+    font: 500 14px Inter, sans-serif;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    padding: 12px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    width: calc(100% - 20px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .searchForm {
+    width: calc(100% - 20px);
+  }
+
+  .authButton:hover {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobileAthButton:hover {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .mobileMenu {
+    z-index: 2;
+    padding: 0px;
+  }
+
+  .cartContainer {
+    position: absolute;
+    right: 20px;
+    margin-top: 0.3rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 2px solid #ffffff;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo {
+    font-size: 2rem;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .sectionTitle {
+    margin-top: 2rem;
+  }
+  .productGrid {
+    margin-top: 1rem;
+  }
+
+  .seeAllButton {
+    width: 7rem;
+    margin: 4rem auto 0;
+    padding: 0.7rem 1rem;
+    font-size: 0.7em;
+  }
+}
+
+.logo {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: #ffffff;
+  letter-spacing: 3px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  align-self: center;
+  user-select: none;
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  order: -1;
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  color: #f0f0f0;
+  transform: scale(1.05);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}

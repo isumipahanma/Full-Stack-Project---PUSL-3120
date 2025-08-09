@@ -1,0 +1,134 @@
+.categoryItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px;
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.categoryItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.categoryItem:hover::before {
+  left: 100%;
+}
+
+.categoryItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+}
+
+.categoryIcon {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.categoryIcon:hover {
+  background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+}
+
+.categoryIcon.active {
+  background: linear-gradient(135deg, #ff1493 0%, #c71585 100%);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.8), 0 0 0 10px rgba(255, 105, 180, 0.1);
+  }
+  100% {
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+  }
+}
+
+.categoryImage {
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+.categoryTitle {
+  align-self: center;
+  margin-top: 15px;
+  font: 600 1em Inter, sans-serif;
+  color: #333;
+  transition: all 0.3s ease;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.categoryItem:hover .categoryTitle {
+  color: #ff69b4;
+  transform: scale(1.05);
+}
+
+.categoryIcon.active + .categoryTitle {
+  color: #ff69b4;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .categoryItem {
+    white-space: initial;
+  }
+}
+
+@media (max-width: 768px) {
+  .categoryIcon {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .categoryTitle {
+    align-self: center;
+    margin-top: 15px;
+    font: 600 0.6em Inter, sans-serif;
+    color: #333;
+  }
+
+  .categoryItem:hover {
+    transform: translateY(-3px);
+  }
+
+  .categoryIcon:hover {
+    transform: scale(1.05);
+  }
+
+  .categoryIcon.active {
+    animation: pulse 2s infinite;
+  }
+}

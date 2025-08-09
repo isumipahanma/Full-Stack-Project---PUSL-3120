@@ -1,0 +1,475 @@
+.profilePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #ff69b4 100%);
+  font-family: "Inter", sans-serif;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #ff69b4 100%);
+  }
+  50% {
+    background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ff1493 100%);
+  }
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  top: 20px;
+  margin-bottom: 2rem;
+}
+
+.backButton,
+.logoutButton {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.backButton:hover,
+.logoutButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 105, 180, 0.4);
+}
+
+.profileContainer {
+  gap: 2rem;
+  display: flex;
+  text-align: center;
+  margin-bottom: 30px;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  padding: 3rem;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 105, 180, 0.1);
+  animation: slideInUp 0.8s ease-out;
+  width: 90%;
+  max-width: 600px;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profileImageContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileImage {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.profileImage:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(255, 105, 180, 0.6);
+}
+
+.editIcon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+  transition: all 0.3s ease;
+  border: 3px solid white;
+}
+
+.editIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+}
+
+.profileDetails {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.inputGroup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputLabel {
+  font-weight: 600;
+  color: #333;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.inputField {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid rgba(255, 105, 180, 0.2);
+  border-radius: 15px;
+  font-size: 1rem;
+  outline: none;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
+}
+
+.inputField:focus {
+  border-color: #ff69b4;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+  transform: translateY(-2px);
+}
+
+.inputField.disabled {
+  background: rgba(248, 249, 250, 0.8);
+  color: #666;
+  cursor: not-allowed;
+  border-color: rgba(255, 105, 180, 0.1);
+}
+
+.inputField.disabled:focus {
+  transform: none;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.1);
+}
+
+.updateButton {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+.updateButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.updateButton:hover::before {
+  left: 100%;
+}
+
+.updateButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(255, 105, 180, 0.4);
+}
+
+.updateButton:active {
+  transform: translateY(-1px);
+}
+
+.updateButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loadingSpinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.purchaseHistory {
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%);
+  padding: 2rem;
+  border-radius: 25px;
+  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 105, 180, 0.1);
+  animation: slideInUp 1s ease-out 0.2s both;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.3));
+  }
+  to {
+    filter: drop-shadow(0 0 15px rgba(255, 105, 180, 0.6));
+  }
+}
+
+.historyContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.purchaseContainer {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 2px solid rgba(255, 105, 180, 0.1);
+  transition: all 0.3s ease;
+}
+
+.purchaseContainer:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
+}
+
+.purchaseTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #ff69b4;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.historyTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.historyTable th,
+.historyTable td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+.historyTable th {
+  background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.historyTable tr:hover {
+  background: rgba(255, 105, 180, 0.05);
+}
+
+.totalRow {
+  background: rgba(255, 105, 180, 0.1) !important;
+  font-weight: 600;
+}
+
+.totalLabel {
+  text-align: right !important;
+  color: #ff69b4;
+}
+
+.totalAmount {
+  color: #ff1493;
+  font-weight: 700;
+}
+
+.noHistory {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.loading .loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid transparent;
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .profilePage {
+    padding: 10px;
+  }
+
+  .profileContainer {
+    padding: 2rem;
+    width: 95%;
+  }
+
+  .purchaseHistory {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .historyTable th,
+  .historyTable td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .backButton,
+  .logoutButton {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileContainer {
+    padding: 1.5rem;
+  }
+
+  .profileImage {
+    width: 100px;
+    height: 100px;
+  }
+
+  .editIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .sectionTitle {
+    font-size: 1.3rem;
+  }
+
+  .historyTable th,
+  .historyTable td {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .purchaseHistory {
+    padding: 1rem;
+  }
+}
+
+/* Additional animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.updateButton:focus {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: all 0.3s ease;
+}
