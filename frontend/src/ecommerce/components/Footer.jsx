@@ -69,7 +69,7 @@ export const Footer = () => {
 
         {/*Copyright*/}
         <div className={styles.copyright}>
-          © 2024 Clothy. All rights reserved.
+          © 2025 Clothy. All rights reserved.
         </div>
       </div>
     </footer>
