@@ -259,12 +259,6 @@ This is a coursework project. Please follow the university's academic integrity 
 ## 📄 **License**
 This project is for educational purposes only.
 
-## 🔗 **Live Demo**
-[Add your deployed application URL here]
-
-## 📞 **Contact**
-[Add your contact information here]
-
 ---
 
 **Note**: This application was developed as part of a full-stack development coursework project, demonstrating modern web development practices and real-time communication technologies. 
