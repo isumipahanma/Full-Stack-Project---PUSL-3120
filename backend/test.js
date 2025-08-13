@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const uri = `mongodb+srv://hesh:tharindu@cluster0.1wsjk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = `mongodb+srv://FullStack:12345678S@cluster0.0e8olu5.mongodb.net/ecommerce?retryWrites=true&w=majority`;
 
 mongoose
   .connect(uri)

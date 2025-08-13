@@ -11,7 +11,7 @@ const socketIo = require("socket.io");
 app.use(cors());
 app.use(express.json());
 
-const uri = `mongodb+srv://dunidu:12345678D@cluster0.0ko9ljb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = `mongodb+srv://FullStack:12345678S@cluster0.0e8olu5.mongodb.net/ecommerce?retryWrites=true&w=majority`;
 
 const connect = async () => {
   try {

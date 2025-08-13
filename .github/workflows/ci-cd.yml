@@ -210,7 +210,7 @@ jobs:
             --network host \
             -e NODE_ENV=test \
             -e PORT=5000 \
-            -e MONGO_URI=mongodb://admin:password123@localhost:27017/ecommerce_test?authSource=admin \
+            -e MONGO_URI=mongodb+srv://FullStack:12345678S@cluster0.0e8olu5.mongodb.net/ecommerce_test?retryWrites=true&w=majority \
             -e JWT_SECRET=test-secret \
             ${{ env.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}-backend:${{ github.sha }}
 

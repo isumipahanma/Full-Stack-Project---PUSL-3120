@@ -33,7 +33,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=5000
-      - MONGO_URI=mongodb://admin:password123@mongodb:27017/ecommerce?authSource=admin
+      - MONGO_URI=${MONGO_URI:-mongodb+srv://FullStack:12345678S@cluster0.0e8olu5.mongodb.net/ecommerce?retryWrites=true&w=majority}
       - JWT_SECRET=your-super-secret-jwt-key-change-in-production
       - CORS_ORIGIN=http://localhost:3000
     ports:
