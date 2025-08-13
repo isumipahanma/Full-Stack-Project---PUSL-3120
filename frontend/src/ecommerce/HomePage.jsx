@@ -42,12 +42,31 @@ export const HomePage = () => {
 
   // Fetch products from your API
   const getProducts = () => {
+    setIsLoading(true);
+    console.log('Fetching products...');
     Axios.get("http://localhost:3001/api/products")
       .then((response) => {
-        setProducts(response.data?.response || []);
+        console.log('API response:', response.data);
+        // Ensure we have a valid array and filter out products without required properties
+        const productsData = response.data?.response || [];
+        console.log('Products data:', productsData);
+        const validProducts = Array.isArray(productsData) 
+          ? productsData.filter(product => {
+              console.log('Checking product:', product);
+              return product && 
+                typeof product === 'object' && 
+                product.title && 
+                typeof product.title === 'string';
+            })
+          : [];
+        console.log('Valid products:', validProducts);
+        setProducts(validProducts);
+        setIsLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error fetching products:", error);
+        setProducts([]); // Set empty array on error
+        setIsLoading(false);
       });
   };
 
@@ -59,6 +78,7 @@ export const HomePage = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [displayedProducts, setDisplayedProducts] = useState(8);
   const [allProductsLoaded, setAllProductsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Close menu if clicked outside
   useEffect(() => {
@@ -143,8 +163,18 @@ export const HomePage = () => {
 
   // Filter products based on selected category and search query
   const filteredProducts = products.filter((product) => {
+    // Ensure product is valid before processing
+    if (!product || typeof product !== 'object') {
+      return false;
+    }
+
     const matchesCategory =
       selectedCategory === "All" || product.category === selectedCategory;
+
+    // If no search query, only filter by category
+    if (!searchQuery || searchQuery.trim() === '') {
+      return matchesCategory;
+    }
 
     // Ensure product.title is defined before calling toLowerCase
     const matchesSearchQuery = product.title
@@ -159,15 +189,21 @@ export const HomePage = () => {
     const query = event.target.value;
     setSearchQuery(query);
 
-    // Show suggestions only if there is a search query
-    if (query.length > 0) {
+    // Debug logging
+    console.log('Search query:', query);
+    console.log('Products:', products);
+    console.log('Is loading:', isLoading);
+
+    // Show suggestions only if there is a search query, valid products, and not loading
+    if (query.length > 0 && !isLoading && Array.isArray(products) && products.length > 0) {
       setShowSuggestions(true);
 
       // Filter the product titles based on the search query
       const suggestions = products
-        .filter((product) =>
-          product.title.toLowerCase().includes(query.toLowerCase())
-        )
+        .filter((product) => {
+          console.log('Processing product:', product);
+          return product && product.title ? product.title.toLowerCase().includes(query.toLowerCase()) : false;
+        })
         .map((product) => product.title);
 
       setFilteredSuggestions(suggestions);
@@ -213,6 +249,7 @@ export const HomePage = () => {
         handleCartClick={handleCartClick}
         cartItems={cartItems}
         menuRef={menuRef}
+        isLoading={isLoading}
       />
       {/* Hero Banner */}
       <div className={styles.heroBanner} role="banner">
@@ -270,24 +307,36 @@ export const HomePage = () => {
         {selectedCategory === "All" ? "All Items" : selectedCategory}
       </h1>
 
-      <section
-        onClick={() => setIsOpen(true)}
-        className={styles.productGrid}
-        aria-label="Featured Products"
-      >
-        {filteredProducts.slice(0, displayedProducts).map((product) => (
-          <ProductCard
-            key={product.id}
-            {...product}
-            onClick={() => handleProductClick(product)}
-          />
-        ))}
-      </section>
+      {/* Loading indicator */}
+      {isLoading && (
+        <div className={styles.loadingContainer}>
+          <p>Loading products...</p>
+        </div>
+      )}
 
-      {filteredProducts.length > displayedProducts && (
-        <button className={styles.seeAllButton} onClick={handleShowAllClick}>
-          {allProductsLoaded ? "No More Products" : "Show All"}
-        </button>
+      {/* Products section - only show when not loading */}
+      {!isLoading && (
+        <>
+          <section
+            onClick={() => setIsOpen(true)}
+            className={styles.productGrid}
+            aria-label="Featured Products"
+          >
+            {filteredProducts.slice(0, displayedProducts).map((product) => (
+              <ProductCard
+                key={product.id}
+                {...product}
+                onClick={() => handleProductClick(product)}
+              />
+            ))}
+          </section>
+
+          {filteredProducts.length > displayedProducts && (
+            <button className={styles.seeAllButton} onClick={handleShowAllClick}>
+              {allProductsLoaded ? "No More Products" : "Show All"}
+            </button>
+          )}
+        </>
       )}
 
       {/* Footer */}

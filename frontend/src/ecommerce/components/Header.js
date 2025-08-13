@@ -16,6 +16,7 @@ const Header = ({
   handleCartClick,
   cartItems,
   menuRef,
+  isLoading,
 }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
@@ -62,9 +63,10 @@ const Header = ({
             id="searchInput"
             type="search"
             className={styles.searchInput}
-            placeholder="Search Product or Brand here ...."
+            placeholder={isLoading ? "Loading products..." : "Search Product or Brand here ...."}
             value={searchQuery}
             onChange={handleSearchChange}
+            disabled={isLoading}
           />
           {showSuggestions && searchQuery && (
             <ul className={styles.suggestionsDropdown}>
